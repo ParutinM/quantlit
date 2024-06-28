@@ -1,2 +1,2 @@
 # quantlit
-Library for Quantitative Analisys
+Library for Quantitative Analysis
