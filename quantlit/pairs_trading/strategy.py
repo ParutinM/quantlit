@@ -3,9 +3,8 @@ import logging
 import numpy as np
 
 from copy import deepcopy
-from itertools import chain
 
-from quantlit.instrument.kline import PairKlines, Klines, Kline
+from quantlit.instrument import PairKlines, Klines, Kline
 from quantlit.pairs_trading.selection import PairsTradingSelection, make_pairs
 from quantlit.pairs_trading.model import PairsTradingModel
 from quantlit.pairs_trading.policy import PairsTradingPolicy
@@ -107,7 +106,7 @@ class PairsTradingStrategy:
             self.pair_to_state[pair]["z_spread"].append(spread)
             pairs_orders = self.pair_to_policy[pair].make_order(spread, x_kline, y_kline)
             for order in pairs_orders:
-                # self._logging.info(f"Date: {x_kline.open_time} -- {order}")
+                self._logging.info(f"Date: {x_kline.open_time} -- {order}")
                 self.pair_to_portfolio[pair].order(order)
                 self.general_portfolio.order(order)
 
@@ -122,4 +121,4 @@ class PairsTradingStrategy:
         self._logging.info(f"")
         for pair in self.selected_pairs:
             self.pair_to_portfolio[pair].close_all_positions()
-            # self._logging.info(f"{pair}: {self.pair_to_portfolio[pair]}")
+            self._logging.info(f"{pair}: {self.pair_to_portfolio[pair]}")

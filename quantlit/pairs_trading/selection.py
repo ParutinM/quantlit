@@ -4,7 +4,7 @@ import statsmodels.api as sm
 import scipy.stats as stats
 import logging
 
-from quantlit.instrument.kline import Klines
+from quantlit.instrument import Klines
 
 
 def make_pairs(klines_list: list[Klines], drop_with_small_size: bool = True) -> list[tuple[Klines, Klines]]:

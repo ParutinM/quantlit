@@ -1,7 +1,7 @@
 import numpy as np
 
-from quantlit.portfolio import Order, Portfolio
-from quantlit.instrument.kline import Klines, Kline
+from quantlit.portfolio import Order
+from quantlit.instrument import Kline
 
 
 class PairsTradingPolicy:

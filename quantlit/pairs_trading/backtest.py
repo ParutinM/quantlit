@@ -1,13 +1,11 @@
 import logging
 from datetime import datetime
 from tqdm import tqdm
-from copy import deepcopy
 
 from quantlit.instrument.interval import Interval
 from quantlit.pairs_trading.strategy import PairsTradingStrategy
 from quantlit.connection.connector import Connector
-from quantlit.instrument.kline import Klines
-from quantlit.portfolio import Portfolio
+from quantlit.instrument import Klines
 
 from quantlit.utils import datetime_period
 
@@ -56,14 +54,6 @@ class PairsTradingBacktest:
     def run(self):
         if len(self.base_asset_to_klines) == 0:
             self.load_klines()
-        # for strategy_i in range(len(self.strategies)):
-        #     self._logging.info("")
-        #     self._logging.info(f"Strategy {self.strategies[strategy_i].name}")
-        #     self._init_portfolio()
-        #
-        #     frequency = self.strategies[strategy_i].frequency.to_timedelta()
-        #     train_period = self.strategies[strategy_i].train_period.to_timedelta()
-        #     trading_period = self.strategies[strategy_i].trading_period.to_timedelta()
 
         for trading_start_dt in datetime_period(self.start_dt, self.end_dt, self.trading_period):
 

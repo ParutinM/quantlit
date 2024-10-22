@@ -3,7 +3,7 @@ from datetime import datetime
 
 import numpy as np
 
-from quantlit.instrument.kline import Kline
+from quantlit.instrument import Kline
 
 
 @dataclass
